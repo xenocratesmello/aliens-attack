@@ -20,7 +20,7 @@ COLOR_PINK: Final[tuple[int]] = (255, 192, 203)
 COLOR_VIOLET: Final[tuple[int]] = (128, 128, 0)
 
 # F
-FPS: Final[int] = 60
+FPS: Final[int] = 30
 
 # M
 MUSIC_VOL: Final[decimal] = 0.3

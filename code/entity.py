@@ -10,8 +10,8 @@ class Entity(ABC):
         self.name = name
         self.position = position
 
-        self.surface: Surface | None = None
-        self.rect: Rect | None = None
+        self.surface: Surface
+        self.rect: Rect
         self.speed: int = 0
         self.health: int = INITIAL_HEALTH['Entity']
         self.damage: int = 0

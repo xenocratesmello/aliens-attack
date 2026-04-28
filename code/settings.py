@@ -1,8 +1,10 @@
 # settings.py
 from typing import Final
 
+import pygame
+
 # D
-DB_NAME: Final[str] = 'db_aliens_attack'
+DB_NAME: Final[str] = 'db_alien_attack'
 
 # F
 BACKGROUND_FILE: Final[dict[str, str]] = {
@@ -47,14 +49,31 @@ BACKGROUND_SPEED: Final[dict[str, int]] = {
     'Level5Bg4': 3}
 
 # I
+INITIAL_DAMAGE: Final[dict[str, int]] = {
+    'Player': 1,
+    'Enemy': 1,
+    'PlayerShot': 30,
+    'EnemyShot': 100
+}
+
 INITIAL_HEALTH: Final[dict[str, int]] = {
-    'Entity': 999}
+    'Entity': 999,
+    'Player': 300,
+    'PlayerShot': 1,
+    'Enemy': 100,
+    'EnemyShot': 1}
 
 INITIAL_SCORE: Final[dict[str, int]] = {
     'Entity': 0,
     'Player': 0,
     'Enemy': 0}
 
+INITIAL_SPEED: Final[dict[str, int]] = {
+    'Player': 2,
+    'PlayerShot': 5,
+    'Enemy': 0,
+    'EnemyShot': 2
+}
 # M
 MAX_LEVEL: Final[int] = 5
 
@@ -73,7 +92,25 @@ MUSIC_FILE: Final[dict[str, str]] = {
     'Level4': 'asset/craftpix/music/Main_theme_snow_city_loopable.mp3',
     'Level5': 'asset/craftpix/music/Winter_ambient_loopable.mp3'}
 
-# R
-RELATIVE_PATH = {
-    'Level1BG': 'asset/craftpix/background/craftpix-net-724983-ocean-and-clouds-free-pixel-art-backgrounds/Ocean_1',
-    'Level2BG': 'asset/craftpix/background/craftpix-net-724983-ocean-and-clouds-free-pixel-art-backgrounds/Ocean_2'}
+# P
+PLAYER_KEY_SHOOT: Final[dict[str, int]] = {
+    'Player': pygame.K_UP}
+PLAYER_KEY_LEFT: Final[dict[str, int]] = {
+    'Player': pygame.K_LEFT
+}
+PLAYER_KEY_RIGHT: Final[dict[str, int]] = {
+    'Player': pygame.K_RIGHT
+}
+
+# S
+SHOT_DELAY: Final[dict[str, int]] = {
+    'Player': 20,
+    'Enemy': 100}
+
+SPRITE_FILE: Final[dict[str, str]] = {
+    'Player': 'asset/craftpix/sprites/craftpix-net-757069-free-spaceship-pixel-art-sprite-sheets/Fighter/Idle.png',
+    'Enemy': 'asset/craftpix/sprites/craftpix-net-757069-free-spaceship-pixel-art-sprite-sheets/Bomber/Idle.png',
+    'PlayerShot': 'asset/craftpix/sprites/craftpix-net-757069-free-spaceship-pixel-art-sprite-sheets/Fighter/Charge_1.png',
+    'EnemyShot': 'asset/craftpix/sprites/craftpix-net-757069-free-spaceship-pixel-art-sprite-sheets/Bomber/Charge_2.png'}
+
+SPRITE_SCALE_FACTOR: Final[float] = 0.5

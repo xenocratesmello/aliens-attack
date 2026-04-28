@@ -1,7 +1,7 @@
 from code.background import Background
 from code.constants import WINDOW_WIDTH, WINDOW_HEIGHT
+from code.enemy import Enemy
 from code.player import Player
-
 
 class EntityFactory:
     @staticmethod
@@ -37,6 +37,11 @@ class EntityFactory:
                     list_background.append(Background(f'{name}{i}', (0,0)))
                     list_background.append(Background(f'{name}{i}', (WINDOW_WIDTH,0)))
             case 'Player':
-                return Player('Player', (WINDOW_HEIGHT // 2, WINDOW_WIDTH))
-                return list_background
+                # return Player('Player', (WINDOW_HEIGHT // 2, WINDOW_WIDTH - 30))
+                return Player('Player', (WINDOW_WIDTH // 2, WINDOW_HEIGHT))
+            case 'Enemies':
+                list_enemies: list[Enemy] = []
+                for i in range(1,5):
+                    list_enemies.append(Enemy(name='Enemy', position=((WINDOW_WIDTH // 4) * i, 0)))
+                return list_enemies
         return None
