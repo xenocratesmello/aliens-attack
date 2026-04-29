@@ -1,5 +1,3 @@
-# level.py
-
 import sys
 import pygame.time
 from pygame import Surface, Rect

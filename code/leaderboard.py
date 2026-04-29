@@ -1,5 +1,3 @@
-# leaderboard.py
-
 import sys
 from datetime import datetime
 import pygame
@@ -42,10 +40,11 @@ class Leaderboard:
                     sys.exit()
                 elif event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_RETURN and len(player_name) == 4:
-                        db_proxy.save_results({'player_name': player_name, 'score': score, 'last_level': last_level if last_level != 'Winner' else f'Level{MAX_LEVEL}',
+                        db_proxy.save_results({'player_name': player_name, 'score': score,
+                                               'last_level': last_level if last_level != 'Winner' else f'Level{MAX_LEVEL}',
                                                'is_winner': last_level == 'Winner', 'date': self.get_formatted_date()})
                         db_proxy.close_connection()
-                        self.show(winner= last_level == 'Winner')
+                        self.show(winner=last_level == 'Winner')
                         return
                     elif event.key == pygame.K_BACKSPACE:
                         player_name = player_name[:-1]
@@ -57,7 +56,7 @@ class Leaderboard:
 
             pygame.display.flip()
 
-    def show(self,winner: bool = False):
+    def show(self, winner: bool = False):
         pygame.mixer.music.load(MUSIC_FILE['Leaderboard'])
         pygame.mixer.music.set_volume(MUSIC_VOL)
         pygame.mixer.music.play(-1)
@@ -65,7 +64,8 @@ class Leaderboard:
         self.window.blit(source=self.surface, dest=self.rect)
 
         self.leaderboard_text(30, 'TOP TEN SCORE', COLOR_RED, LEADERBOARD_POSITION['Title'])
-        self.leaderboard_text(20, 'NAME   SCORE    LEVEL    RESULT             DATE          ', COLOR_BLUE, LEADERBOARD_POSITION['Label'])
+        self.leaderboard_text(20, 'NAME   SCORE    LEVEL    RESULT             DATE          ', COLOR_BLUE,
+                              LEADERBOARD_POSITION['Label'])
         db_proxy = DbProxy()
         list_results = db_proxy.retrieve_winners_top10() if winner else db_proxy.retrieve_top10()
         db_proxy.close_connection()

@@ -1,9 +1,7 @@
 import sys
-
 import pygame
 from pygame import Surface, Rect
 from pygame.font import Font
-
 from code.constants import WINDOW_WIDTH, WINDOW_HEIGHT, MUSIC_VOL, COLOR_RED, COLOR_WHITE
 from code.settings import BACKGROUND_FILE, MUSIC_FILE, LEADERBOARD_POSITION
 
@@ -35,8 +33,10 @@ class Instruction:
                               LEADERBOARD_POSITION[4])
         self.instruction_text(20, '- The game over occurs when the player', COLOR_WHITE,
                               LEADERBOARD_POSITION[5])
-        self.instruction_text(20, '  receives an enemies\' shot.', COLOR_WHITE,
+        self.instruction_text(20, '  receives an enemies\' shot or an enemy.', COLOR_WHITE,
                               LEADERBOARD_POSITION[6])
+        self.instruction_text(20, '  ship lands on the ground.', COLOR_WHITE,
+                              LEADERBOARD_POSITION[7])
 
         while True:
             for event in pygame.event.get():

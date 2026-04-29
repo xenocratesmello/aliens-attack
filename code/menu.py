@@ -10,7 +10,7 @@ class Menu:
     def __init__(self, window: Surface):
         self.window = window
         self.surface: Surface = pygame.transform.scale(surface=pygame.image.load(BACKGROUND_FILE['Menu']),
-                                              size=(WINDOW_WIDTH, WINDOW_HEIGHT)).convert_alpha()
+                                                       size=(WINDOW_WIDTH, WINDOW_HEIGHT)).convert_alpha()
         # self.surface: Surface = pygame.image.load(BACKGROUND_FILE['Menu']).convert_alpha()
         self.rect: Rect = self.surface.get_rect(left=0, top=0)
         self.menu_option: int = 0
@@ -23,7 +23,7 @@ class Menu:
         while True:
             # Draw images
             self.window.blit(source=self.surface, dest=self.rect)
-            self.menu_text(50, "ALIEN ATTACK", COLOR_RED, ((WINDOW_WIDTH // 2), (
+            self.menu_text(50, "ALIENS ATTACK", COLOR_RED, ((WINDOW_WIDTH // 2), (
                     WINDOW_HEIGHT // (len(MENU_OPTION) + 3))))  # Header, Footer, Title and len(MENU_OPTION)
 
             for i in range(len(MENU_OPTION)):

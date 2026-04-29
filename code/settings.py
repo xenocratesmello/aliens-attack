@@ -1,10 +1,9 @@
-# settings.py
 from typing import Final
 import pygame
 from code.constants import WINDOW_WIDTH
 
 # D
-DB_NAME: Final[str] = 'db_alien_attack'
+DB_NAME: Final[str] = 'db_aliens_attack'
 
 # F
 BACKGROUND_FILE: Final[dict[str, str]] = {
@@ -55,7 +54,7 @@ INITIAL_DAMAGE: Final[dict[str, int]] = {
     'Player': 1,
     'Enemy': 1,
     'PlayerShot': 30,
-    'EnemyShot': 100
+    'EnemyShot': 50
 }
 
 INITIAL_HEALTH: Final[dict[str, int]] = {
@@ -71,6 +70,7 @@ INITIAL_SCORE: Final[dict[str, int]] = {
     'Enemy': 0}
 
 INITIAL_SPEED: Final[dict[str, int]] = {
+    # The level number will be added to the speed to increase the level difficulty.
     'Player': 2,
     'PlayerShot': 5,
     'Enemy': 0,

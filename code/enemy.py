@@ -1,6 +1,5 @@
 import pygame
 from pygame import Surface, Rect
-
 from code.constants import WINDOW_HEIGHT, WINDOW_WIDTH
 from code.enemy_shot import EnemyShot
 from code.entity import Entity
@@ -25,7 +24,7 @@ class Enemy(Entity):
             case 'right':
                 self.rect.right = min(WINDOW_WIDTH, self.rect.right + self.speed)
             case 'down':
-                self.rect.centery = min(WINDOW_HEIGHT, self.rect.centery + (WINDOW_HEIGHT // 5))
+                self.rect.bottom = min(WINDOW_HEIGHT, self.rect.bottom + (WINDOW_HEIGHT // 5))
 
     def shoot(self):
         self.shot_delay -= 1

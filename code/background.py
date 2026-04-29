@@ -1,8 +1,5 @@
-import decimal
-
 import pygame
 from pygame import Surface, Rect
-
 from code.constants import WINDOW_WIDTH, WINDOW_HEIGHT
 from code.entity import Entity
 from code.settings import BACKGROUND_FILE

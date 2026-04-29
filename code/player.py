@@ -1,5 +1,3 @@
-# player.py
-
 import pygame
 from pygame import Surface, Rect
 from code.constants import WINDOW_WIDTH
@@ -13,7 +11,8 @@ class Player(Entity):
     def __init__(self, name: str, position: tuple):
         super().__init__(name, position)
 
-        self.surface: Surface = pygame.transform.scale_by(surface=pygame.image.load(SPRITE_FILE[self.name]), factor=SPRITE_SCALE_FACTOR).convert_alpha()
+        self.surface: Surface = pygame.transform.scale_by(surface=pygame.image.load(SPRITE_FILE[self.name]),
+                                                          factor=SPRITE_SCALE_FACTOR).convert_alpha()
         self.rect: Rect = self.surface.get_rect(left=self.position[0], bottom=self.position[1])
         self.shot_delay: int = SHOT_DELAY[self.name]
         self.speed: int = INITIAL_SPEED[self.name]
@@ -32,6 +31,6 @@ class Player(Entity):
             self.shot_delay = SHOT_DELAY[self.name]
             pressed_keys = pygame.key.get_pressed()
             if pressed_keys[PLAYER_KEY_SHOOT[self.name]]:
-                return PlayerShot(name=f'{self.name}Shot', position=(self.rect.centerx, self.rect.centery), player_shooter=self)
+                return PlayerShot(name=f'{self.name}Shot', position=(self.rect.centerx, self.rect.centery),
+                                  player_shooter=self)
         return None
-

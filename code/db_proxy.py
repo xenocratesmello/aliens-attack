@@ -1,5 +1,3 @@
-# db_proxy.py
-
 import sqlite3
 from code.settings import DB_NAME
 

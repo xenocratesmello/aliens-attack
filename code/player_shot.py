@@ -1,6 +1,5 @@
 import pygame
 from pygame import Surface, Rect
-
 from code.entity import Entity
 from code.settings import INITIAL_SPEED, INITIAL_HEALTH, INITIAL_DAMAGE, SPRITE_FILE
 

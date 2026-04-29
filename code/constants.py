@@ -1,7 +1,5 @@
-# constants.py
 import decimal
 from typing import Final
-
 import pygame
 
 # C

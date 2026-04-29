@@ -1,8 +1,6 @@
 import sys
-
 import pygame
 from pygame import Surface
-
 from code.constants import WINDOW_WIDTH, WINDOW_HEIGHT
 from code.entity_factory import EntityFactory
 from code.instructions import Instruction
@@ -18,7 +16,6 @@ class Game:
         pygame.init()
         # Create the game's window
         self.window: Surface = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
-
 
     def run(self):
         # To use the package it must be initialized.
