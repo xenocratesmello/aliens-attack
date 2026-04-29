@@ -131,8 +131,8 @@ class Level:
             EntityMediator.verify_health(self.player_list)
             EntityMediator.verify_health(self.enemy_list)
 
-    def level_text(self, text_size: int, text: str, text_color: tuple, text_pos: tuple):
+    def level_text(self, text_size: int, text: str, text_color: tuple, text_position: tuple):
         text_font: Font = pygame.font.SysFont(name='Arial', size=text_size, bold=False, italic=True)
         text_surface: Surface = text_font.render(text, True, text_color).convert_alpha()
-        text_rect: Rect = text_surface.get_rect(left=text_pos[0], top=text_pos[1])
+        text_rect: Rect = text_surface.get_rect(left=text_position[0], top=text_position[1])
         self.window.blit(source=text_surface, dest=text_rect)

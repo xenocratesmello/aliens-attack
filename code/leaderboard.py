@@ -30,7 +30,7 @@ class Leaderboard:
 
         while True:
             self.window.blit(source=self.surface, dest=self.rect)
-            self.leaderboard_text(48, leaderboard_title, COLOR_GREEN, LEADERBOARD_POSITION['Title'])
+            self.leaderboard_text(48, leaderboard_title, COLOR_RED, LEADERBOARD_POSITION['Title'])
             text: str = 'Enter Player\'s Name'
             score: int = player_score
 

@@ -27,7 +27,8 @@ BACKGROUND_FILE: Final[dict[str, str]] = {
     'Level5Bg2': 'asset/craftpix/background/craftpix-net-724983-ocean-and-clouds-free-pixel-art-backgrounds/Ocean_5/2.png',
     'Level5Bg3': 'asset/craftpix/background/craftpix-net-724983-ocean-and-clouds-free-pixel-art-backgrounds/Ocean_5/3.png',
     'Level5Bg4': 'asset/craftpix/background/craftpix-net-724983-ocean-and-clouds-free-pixel-art-backgrounds/Ocean_5/4.png',
-    'Leaderboard': 'asset/craftpix/background/craftpix-net-724983-ocean-and-clouds-free-pixel-art-backgrounds/Ocean_7/6.png'}
+    'Leaderboard': 'asset/craftpix/background/craftpix-net-724983-ocean-and-clouds-free-pixel-art-backgrounds/Ocean_7/6.png',
+    'Instruction': 'asset/craftpix/background/craftpix-net-724983-ocean-and-clouds-free-pixel-art-backgrounds/Ocean_6/5.png'}
 
 BACKGROUND_SPEED: Final[dict[str, int]] = {
     'Level1Bg1': 0,
@@ -112,7 +113,8 @@ MUSIC_FILE: Final[dict[str, str]] = {
     'Level3': 'asset/craftpix/music/Main_theme_snow_city_alternative_loopable.mp3',
     'Level4': 'asset/craftpix/music/Main_theme_snow_city_loopable.mp3',
     'Level5': 'asset/craftpix/music/Winter_ambient_loopable.mp3',
-    'Leaderboard': 'asset/pixabay/music/arthurhale-8bit-video-game-music-289970.mp3'}
+    'Leaderboard': 'asset/pixabay/music/arthurhale-8bit-video-game-music-289970.mp3',
+    'Instruction': 'asset/pixabay/music/tudo_free-16-bits-music-294095.mp3'}
 
 # P
 PLAYER_KEY_SHOOT: Final[dict[str, int]] = {

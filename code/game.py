@@ -5,6 +5,7 @@ from pygame import Surface
 
 from code.constants import WINDOW_WIDTH, WINDOW_HEIGHT
 from code.entity_factory import EntityFactory
+from code.instructions import Instruction
 from code.leaderboard import Leaderboard
 from code.player import Player
 from code.settings import MENU_OPTION, MAX_LEVEL
@@ -23,6 +24,7 @@ class Game:
         # To use the package it must be initialized.
         while True:
             leaderboard = Leaderboard(self.window)
+            instruction = Instruction(self.window)
             menu = Menu(self.window)
             menu_option: str = menu.run()
             # Create the player
@@ -42,7 +44,7 @@ class Game:
             elif menu_option == MENU_OPTION[1]:
                 leaderboard.show()
             elif menu_option == MENU_OPTION[2]:
-                pass
+                instruction.show()
             elif menu_option == MENU_OPTION[3]:
                 pygame.quit()
                 sys.exit()
