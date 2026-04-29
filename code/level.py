@@ -1,9 +1,9 @@
-import sys
+# level.py
 
+import sys
 import pygame.time
 from pygame import Surface, Rect
 from pygame.font import Font
-
 from code.background import Background
 from code.constants import EVENT_ENEMY, SPAWN_TIME, EVENT_TIMEOUT, TIMEOUT_STEP, TIMEOUT_LEVEL, MUSIC_VOL, FPS, \
     COLOR_MAGENTA, WINDOW_WIDTH, WINDOW_HEIGHT
@@ -17,10 +17,9 @@ from code.settings import MUSIC_FILE, BACKGROUND_SPEED, INITIAL_SPEED
 
 
 class Level:
-    def __init__(self, window: Surface, name: str, player_score: int):
+    def __init__(self, window: Surface, name: str, player: Player):
         self.window = window
         self.name = name
-        self.player_score = player_score
         self.timeout: int = TIMEOUT_LEVEL
         self.background_list: list[Background] = []
         self.background_list.extend(EntityFactory.get_entity(f'{self.name}Bg'))
@@ -29,8 +28,7 @@ class Level:
         self.enemy_direction: str = 'left'
 
         self.player_list: list[Player] = []
-        self.player_list.append(EntityFactory.get_entity('Player'))
-        self.player_list[0].score = self.player_score
+        self.player_list.append(player)
 
         self.player_shot_list: list[PlayerShot] = []
         self.enemy_shot_list: list[EnemyShot] = []
@@ -38,7 +36,7 @@ class Level:
         pygame.time.set_timer(EVENT_ENEMY, SPAWN_TIME)
         pygame.time.set_timer(EVENT_TIMEOUT, TIMEOUT_STEP)
 
-    def run(self, player_score: int):
+    def run(self):
         pygame.mixer_music.load(MUSIC_FILE[self.name])
         pygame.mixer.music.set_volume(MUSIC_VOL)
         pygame.mixer_music.play(-1)
@@ -98,9 +96,6 @@ class Level:
                 if event.type == EVENT_TIMEOUT:
                     self.timeout -= TIMEOUT_STEP
                     if self.timeout <= 0:
-                        for player in self.player_list:
-                            self.player_score = max(player.score, self.player_score)
-
                         return True
 
                 if len(self.player_list) == 0:
@@ -115,8 +110,10 @@ class Level:
 
             # Printed text
             self.level_text(14, f'{self.name} - Timeout: {self.timeout / 1000 :.1f}s', COLOR_MAGENTA, (10, 5))
-            self.level_text(14,f'fps: {clock.get_fps():.0f}', COLOR_MAGENTA, (10, WINDOW_HEIGHT - 35))
-            self.level_text(14, f'enemies: {len(self.enemy_list)}, shots: {len(self.enemy_shot_list)}, players: {len(self.player_list)}, shots: {len(self.player_shot_list)}', COLOR_MAGENTA, (10, WINDOW_HEIGHT - 20))
+            self.level_text(14, f'fps: {clock.get_fps():.0f}', COLOR_MAGENTA, (10, WINDOW_HEIGHT - 35))
+            self.level_text(14,
+                            f'enemies: {len(self.enemy_list)}, shots: {len(self.enemy_shot_list)}, players: {len(self.player_list)}, shots: {len(self.player_shot_list)}',
+                            COLOR_MAGENTA, (10, WINDOW_HEIGHT - 20))
             pygame.display.flip()
 
             # Collisions Enemies and PlayerShots
@@ -133,7 +130,6 @@ class Level:
             EntityMediator.verify_collision(self.player_list, self.enemy_list)
             EntityMediator.verify_health(self.player_list)
             EntityMediator.verify_health(self.enemy_list)
-
 
     def level_text(self, text_size: int, text: str, text_color: tuple, text_pos: tuple):
         text_font: Font = pygame.font.SysFont(name='Arial', size=text_size, bold=False, italic=True)

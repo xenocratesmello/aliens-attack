@@ -36,8 +36,8 @@ class EntityFactory:
                 for i in range(1,5):
                     list_background.append(Background(f'{name}{i}', (0,0)))
                     list_background.append(Background(f'{name}{i}', (WINDOW_WIDTH,0)))
+                return list_background
             case 'Player':
-                # return Player('Player', (WINDOW_HEIGHT // 2, WINDOW_WIDTH - 30))
                 return Player('Player', (WINDOW_WIDTH // 2, WINDOW_HEIGHT))
             case 'Enemies':
                 list_enemies: list[Enemy] = []

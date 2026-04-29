@@ -1,8 +1,7 @@
-from math import factorial
+# player.py
 
 import pygame
 from pygame import Surface, Rect
-
 from code.constants import WINDOW_WIDTH
 from code.entity import Entity
 from code.player_shot import PlayerShot

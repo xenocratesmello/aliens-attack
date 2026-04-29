@@ -1,7 +1,7 @@
 # settings.py
 from typing import Final
-
 import pygame
+from code.constants import WINDOW_WIDTH
 
 # D
 DB_NAME: Final[str] = 'db_alien_attack'
@@ -26,7 +26,8 @@ BACKGROUND_FILE: Final[dict[str, str]] = {
     'Level5Bg1': 'asset/craftpix/background/craftpix-net-724983-ocean-and-clouds-free-pixel-art-backgrounds/Ocean_5/1.png',
     'Level5Bg2': 'asset/craftpix/background/craftpix-net-724983-ocean-and-clouds-free-pixel-art-backgrounds/Ocean_5/2.png',
     'Level5Bg3': 'asset/craftpix/background/craftpix-net-724983-ocean-and-clouds-free-pixel-art-backgrounds/Ocean_5/3.png',
-    'Level5Bg4': 'asset/craftpix/background/craftpix-net-724983-ocean-and-clouds-free-pixel-art-backgrounds/Ocean_5/4.png'}
+    'Level5Bg4': 'asset/craftpix/background/craftpix-net-724983-ocean-and-clouds-free-pixel-art-backgrounds/Ocean_5/4.png',
+    'Leaderboard': 'asset/craftpix/background/craftpix-net-724983-ocean-and-clouds-free-pixel-art-backgrounds/Ocean_7/6.png'}
 
 BACKGROUND_SPEED: Final[dict[str, int]] = {
     'Level1Bg1': 0,
@@ -72,16 +73,36 @@ INITIAL_SPEED: Final[dict[str, int]] = {
     'Player': 2,
     'PlayerShot': 5,
     'Enemy': 0,
-    'EnemyShot': 2
-}
+    'EnemyShot': 2}
+
+# L
+LEADERBOARD_TITLE: Final[dict[str, str]] = {
+    'Winner': 'YOU WIN',
+    'Game Over': 'GAME OVER'}
+
+LEADERBOARD_POSITION: Final[dict[str | int, tuple]] = {
+    'Title': (WINDOW_WIDTH // 2, 50),
+    'EnterName': (WINDOW_WIDTH // 2, 80),
+    'Label': (WINDOW_WIDTH // 2, 90),
+    'Name': (WINDOW_WIDTH // 2, 110),
+    0: (WINDOW_WIDTH // 2, 110),
+    1: (WINDOW_WIDTH // 2, 130),
+    2: (WINDOW_WIDTH // 2, 150),
+    3: (WINDOW_WIDTH // 2, 170),
+    4: (WINDOW_WIDTH // 2, 190),
+    5: (WINDOW_WIDTH // 2, 210),
+    6: (WINDOW_WIDTH // 2, 230),
+    7: (WINDOW_WIDTH // 2, 250),
+    8: (WINDOW_WIDTH // 2, 270),
+    9: (WINDOW_WIDTH // 2, 290)}
+
 # M
 MAX_LEVEL: Final[int] = 5
 
 MENU_OPTION: Final[tuple[str]] = (
     'NEW GAME',
-    'SCORE',
+    'LEADERBOARD',
     'INSTRUCTIONS',
-    'SETTINGS',
     'EXIT')
 
 MUSIC_FILE: Final[dict[str, str]] = {
@@ -90,7 +111,8 @@ MUSIC_FILE: Final[dict[str, str]] = {
     'Level2': 'asset/craftpix/music/Dark_winter_theme.mp3',
     'Level3': 'asset/craftpix/music/Main_theme_snow_city_alternative_loopable.mp3',
     'Level4': 'asset/craftpix/music/Main_theme_snow_city_loopable.mp3',
-    'Level5': 'asset/craftpix/music/Winter_ambient_loopable.mp3'}
+    'Level5': 'asset/craftpix/music/Winter_ambient_loopable.mp3',
+    'Leaderboard': 'asset/pixabay/music/arthurhale-8bit-video-game-music-289970.mp3'}
 
 # P
 PLAYER_KEY_SHOOT: Final[dict[str, int]] = {
@@ -104,7 +126,7 @@ PLAYER_KEY_RIGHT: Final[dict[str, int]] = {
 
 # S
 SHOT_DELAY: Final[dict[str, int]] = {
-    'Player': 20,
+    'Player': 15,
     'Enemy': 100}
 
 SPRITE_FILE: Final[dict[str, str]] = {

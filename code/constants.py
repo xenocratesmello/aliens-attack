@@ -18,6 +18,7 @@ COLOR_ORANGE: Final[tuple[int]] = (255, 165, 0)
 COLOR_PURPLE: Final[tuple[int]] = (128, 0, 128)
 COLOR_PINK: Final[tuple[int]] = (255, 192, 203)
 COLOR_VIOLET: Final[tuple[int]] = (128, 128, 0)
+COLOR_BROWN: Final[tuple[int]] = (128, 128, 0)
 
 # F
 FPS: Final[int] = 30
