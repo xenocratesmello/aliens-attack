@@ -6,10 +6,11 @@ from pygame.font import Font
 
 from code.background import Background
 from code.constants import EVENT_ENEMY, SPAWN_TIME, EVENT_TIMEOUT, TIMEOUT_STEP, TIMEOUT_LEVEL, MUSIC_VOL, FPS, \
-    COLOR_MAGENTA, WINDOW_WIDTH
+    COLOR_MAGENTA, WINDOW_WIDTH, WINDOW_HEIGHT
 from code.enemy import Enemy
 from code.enemy_shot import EnemyShot
 from code.entity_factory import EntityFactory
+from code.entity_mediator import EntityMediator
 from code.player import Player
 from code.player_shot import PlayerShot
 from code.settings import MUSIC_FILE, BACKGROUND_SPEED, INITIAL_SPEED
@@ -62,6 +63,16 @@ class Level:
                 self.level_text(14, f'{player.name} - Health: {player.health:.0f} | Score: {player.score}',
                                 COLOR_MAGENTA, (10, 25))
 
+            # Player's Shoot
+            for shot in self.player_shot_list:
+                self.window.blit(source=shot.surface, dest=shot.rect)
+                shot.move()
+
+            # Enemy's Shoot
+            for shot in self.enemy_shot_list:
+                self.window.blit(source=shot.surface, dest=shot.rect)
+                shot.move()
+
             # Enemy control
             for enemy in self.enemy_list:
                 self.window.blit(source=enemy.surface, dest=enemy.rect)
@@ -95,7 +106,34 @@ class Level:
                 if len(self.player_list) == 0:
                     return False
 
+                if len(self.enemy_list) == 0:
+                    return True
+
+                for enemy in self.enemy_list:
+                    if enemy.rect.bottom >= WINDOW_HEIGHT:
+                        return False
+
+            # Printed text
+            self.level_text(14, f'{self.name} - Timeout: {self.timeout / 1000 :.1f}s', COLOR_MAGENTA, (10, 5))
+            self.level_text(14,f'fps: {clock.get_fps():.0f}', COLOR_MAGENTA, (10, WINDOW_HEIGHT - 35))
+            self.level_text(14, f'enemies: {len(self.enemy_list)}, shots: {len(self.enemy_shot_list)}, players: {len(self.player_list)}, shots: {len(self.player_shot_list)}', COLOR_MAGENTA, (10, WINDOW_HEIGHT - 20))
             pygame.display.flip()
+
+            # Collisions Enemies and PlayerShots
+            EntityMediator.verify_collision(self.enemy_list, self.player_shot_list)
+            EntityMediator.verify_health(self.player_shot_list)
+            EntityMediator.verify_health(self.enemy_list)
+
+            # Collisions Players and EnemyShots
+            EntityMediator.verify_collision(self.player_list, self.enemy_shot_list)
+            EntityMediator.verify_health(self.enemy_shot_list)
+            EntityMediator.verify_health(self.player_list)
+
+            # Collisions Players and Enemies
+            EntityMediator.verify_collision(self.player_list, self.enemy_list)
+            EntityMediator.verify_health(self.player_list)
+            EntityMediator.verify_health(self.enemy_list)
+
 
     def level_text(self, text_size: int, text: str, text_color: tuple, text_pos: tuple):
         text_font: Font = pygame.font.SysFont(name='Arial', size=text_size, bold=False, italic=True)
